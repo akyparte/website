@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import styles from "./styles.module.css"
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { useInView } from 'react-intersection-observer';
 
 function ContactUs() {
   const [formData, setFormData] = useState({
@@ -36,11 +37,13 @@ function ContactUs() {
     });
   };
   const isMobile = useMediaQuery('(max-width:500px)');
+  const { ref: leftRef, inView: leftInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: rightRef, inView: rightInView } = useInView({ triggerOnce: true, threshold: 0.1 });
   return (
     
     <Grid  container width='90%' spacing={2} m='auto' height='85vh' flexDirection={isMobile ? 'column' : 'row'} p={3} >
       
-      <Grid  width={isMobile?"80vw":"477px"} sx={{ marginBottom: isMobile ? 7 : 0 }}  >
+      <Grid className={`${leftInView ? styles.slideInFromLeft : ''}`} width={isMobile?"80vw":"477px"} sx={{ marginBottom: isMobile ? 7 : 0 }} ref={leftRef} >
         <div className={styles.frameWrapper}>
           <div className={styles.frameGroup}>
             <div className={styles.notSureWhatYouNeedWrapper}>
@@ -53,7 +56,7 @@ function ContactUs() {
           </div>
         </div>
       </Grid>
-      <Grid container className={styles.formGrid} item md={7} display='flex' height={isMobile ? '40vh':'52vh'} width={isMobile?"77vw":"646px"} bgcolor='#F1E5D1'  p={4} borderRadius='10px'>
+      <Grid container className={`${styles.formGrid} ${rightInView ? styles.slideInFromRight : ''}`} item md={7} display='flex' height={isMobile ? '40vh':'52vh'} width={isMobile?"77vw":"646px"} bgcolor='#F1E5D1'  p={4} borderRadius='10px' ref={rightRef}>
       <form onSubmit={handleSubmit} style={{width:'100%',display:'flex',gap:'10px',flexDirection:'column'}} >
       <div style={{display:'flex',gap:'10px'}}>
         

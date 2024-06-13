@@ -1,11 +1,16 @@
 import Header from "../../../commonComponents/header/index.desktop";
 import { Box, Grid, Typography } from "@mui/material";
 import styles from "./styles.module.css"
+import { useInView } from 'react-intersection-observer';
 
 export function About() {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
   return <>
 
-    <Grid container height="85vh" p={5} width='90vw' m='auto' id='about'>
+    <Grid container className={`${styles.container} ${inView ? styles.slideInUp : ''}`}  ref={ref} height="85vh" p={5} width='90vw' m='auto' id='about'>
       <Grid container display='flex' flexDirection='column' alignItems='center' justifyContent='center' >
         {/* <Typography variant="h4">About Us</Typography>
                 <Typography>Who are we?</Typography>

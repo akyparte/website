@@ -7,6 +7,17 @@
     font-weight: 600;
     font-family: var(--font-inter);
   }
+  .container {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .slideInUp {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
   .whoAreWe {
     /* position: relative; */
     text-align: center;

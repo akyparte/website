@@ -10,6 +10,36 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   max-width: 100%;
 }
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slideInFromLeft {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.slideInFromRight {
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
 .notSureWhatYouNeedWrapper {
   align-self: stretch;
   display: flex;
