@@ -47,7 +47,7 @@ function ContactUs() {
   // console.log(isMobile);
   return (
 
-    <Grid className={styles.mainGrid} container id="contactUs" width='100%' spacing={2}  m='auto' height={isMobile ? '90vh' : '100vh'} justifyContent="center" alignItems="center" sx={{ flexDirection: isMobile ? 'row' : 'row', }} p={3} >
+    <Grid className={styles.mainGrid} container id="contactUs" width='100%' spacing={2}  m='auto' height={isMobile ? '90vh' : '75vh'} justifyContent="center" alignItems="center" sx={{ flexDirection: isMobile ? 'row' : 'row', }} p={3} >
 
       <Grid ref={leftRef} height={isMobile? "10vh": "25vh"} width={isMobile ? "80vw" : isTablet ? "35vw" : "477px"} sx={{ marginBottom: isMobile ? 7 : 0 }}  >
         <Box className={styles.frameWrapper}>
